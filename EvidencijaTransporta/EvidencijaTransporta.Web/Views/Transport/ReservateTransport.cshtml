@@ -1,0 +1,61 @@
+﻿@model CreateTransportModel
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="date" id="txtDate"
+                  min="2021-01-01" max="2023-12-31" class="form-control" value="@Model.Date.ToString("yyyy-MM-dd")" />
+            @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TransportTypes, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+             <select id="selectType" class="form-control">
+                @foreach (var type in Model.TransportTypes)
+                {
+                    <option value="@type.Value" selected="@Model.SelectedTransportType">@type.Text</option>
+                }
+            </select>
+            @Html.ValidationMessageFor(model => model.TransportTypes, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ShipmentAmount, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="text" id="txtAmount" placeholder="Type" class="form-control" value="@Model.ShipmentAmount" />
+            @Html.ValidationMessageFor(model => model.ShipmentAmount, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.VehicleType, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="text" id="txtVehicle" placeholder="Vehicle" class="form-control" value="@Model.VehicleType" />
+            @Html.ValidationMessageFor(model => model.VehicleType, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-10">
+            <button id="createTransport" type="button" class="btn btn-default" onclick="Create()">Create</button>
+            <button id="editTransport" type="button" class="btn btn-default" onclick="Edit(@Model.Id)" style="display: none">Save Changes</button>
+            <button id="discardTransport" type="button" class="btn btn-default" onclick="DiscardChanges()" style="display: none">Discard Changes</button>
+        </div>
+    </div>
+</div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/Transport.js")
+}

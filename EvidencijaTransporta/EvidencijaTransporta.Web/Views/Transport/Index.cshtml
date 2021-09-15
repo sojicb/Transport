@@ -1,0 +1,21 @@
+﻿@model TransportViewModel
+
+<h2>List of all Transports</h2>
+
+<div id="dvEdit">
+    @{
+        Html.RenderAction("ReservateTransport");
+    }
+</div>
+
+<div id="dvDetails" style="width: 100%; height: 100%; display: none">
+    @* Div populated with details of the chosen transport reservation *@
+</div>
+
+<div id="dvTable" style="width: 100%; height: 100%;">
+    @{
+        Html.RenderAction("ListTransportReservations");
+    }
+</div>
+
+@Scripts.Render("~/Scripts/Transport.js")

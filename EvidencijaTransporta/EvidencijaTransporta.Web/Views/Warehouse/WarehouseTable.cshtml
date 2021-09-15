@@ -1,0 +1,53 @@
+﻿@model WarehouseViewModel
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Warehouses.First().Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Warehouses.First().MaximumCapacity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Warehouses.First().CurrentCapacity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Warehouses.First().City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Warehouses.First().Country)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Warehouses.First().StreetAndNumber)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (WarehouseModel warehouse in Model.Warehouses)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => warehouse.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => warehouse.MaximumCapacity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => warehouse.CurrentCapacity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => warehouse.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => warehouse.Country)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => warehouse.StreetAndNumber)
+            </td>
+            <td>
+                <button id="listStorage-@warehouse.Id" type="button" onclick="WarehouseInformation(@warehouse.Id)">List Storage</button> |
+                <button id="storeWarehouse-@warehouse.Id" type="button" onclick="OpenStorageForm(@warehouse.Id)">Store</button>
+            </td>
+        </tr>
+    }
+</table>

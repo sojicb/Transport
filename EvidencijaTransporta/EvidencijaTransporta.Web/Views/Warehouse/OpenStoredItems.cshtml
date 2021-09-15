@@ -1,0 +1,31 @@
+﻿@model IEnumerable<StorageModel>
+
+<body>
+    <div><h1>Warehouse Storage</h1></div>
+    <div style="margin: 10px">
+        <table style="width: 100%; height: 100%; padding: 5px">
+            <tr>
+                <th>Amount</th>
+                <th>Type</th>
+                <th>Date Stored</th>
+                <th>Date Cleared</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td> @item.Amount</td>
+                    <td> @item.Type</td>
+                    <td> @item.DateStored</td>
+                    <td> @item.DateCleared</td>
+                </tr>
+            }
+            <tr>
+                <td>
+                    <button id="hide" class="btn btn-default" onclick="HideDetails()">Hide Details</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+@Scripts.Render("~/Scripts/Warehouse.js")

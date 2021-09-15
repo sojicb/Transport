@@ -1,0 +1,25 @@
+﻿@model TransportModel
+
+
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Date</th>
+        <th>Shipment amount</th>
+        <th>Type of Transport</th>
+        <th>Type of Vehicle</th>
+    </tr>
+    <tr>
+        <td> @Model.Id</td>
+        <td> @Model.Date</td>
+        <td> @Model.ShipmentAmount</td>
+        <td> @Model.TransportType</td>
+        <td> @Model.VehicleType</td>
+        <td>
+            <button id="hide" class="btn btn-default">Hide Details</button>
+        </td>
+    </tr>
+</table>
+
+
+@Scripts.Render("~/Scripts/DetailsPage.js")

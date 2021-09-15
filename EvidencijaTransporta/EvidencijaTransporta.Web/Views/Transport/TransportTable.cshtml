@@ -1,0 +1,25 @@
+﻿@model TransportViewModel
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Transports.First().Date)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (TransportModel transport in Model.Transports)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => transport.Date)
+            </td>
+
+            <td >
+                <button id="edit-@transport.Id" type="button" class="btn btn-default" onclick="FillEditFileds(@transport.Id)">Edit</button> |
+                <button id="details" type="button" onclick="DetailsBtnClick(@transport.Id)" class="btn btn-default">Details</button> |
+                <button id="delete-@transport.Id" type="button" onclick="Delete(@transport.Id)" class="btn btn-default">Delete</button>
+            </td>
+        </tr>
+    }
+</table>

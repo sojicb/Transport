@@ -1,0 +1,19 @@
+﻿@model WarehouseViewModel
+
+<h2>Warehouses</h2>
+
+<div id="dvStorage" style="width: 100%; height: 100%; display: none">
+    @* Div populated with storage form by ajax call. *@
+</div>
+
+<div id="dvTable" style="width: 100%; height: 100%;">
+    @{ 
+        Html.RenderAction("ListWarehouses");
+    }
+</div>
+
+<div id="warehouseInfo" style="width: 100%; height: 100%; display: none">
+    @* Div populated with storage information by ajax call. *@
+</div>
+
+@Scripts.Render("~/Scripts/Warehouse.js")

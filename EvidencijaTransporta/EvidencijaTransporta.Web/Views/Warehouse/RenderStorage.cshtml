@@ -1,0 +1,52 @@
+﻿@model StorageModel
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Amount, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" id="txtAmount" placeholder="Amount" class="form-control" />
+                @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" id="txtType" placeholder="Type" class="form-control" />
+                @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DateStored, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="date" min="2021-01-01" max="2023-12-31" id="txtDateFrom" class="form-control" />
+                @Html.ValidationMessageFor(model => model.DateStored, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DateCleared, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="date" min="2021-01-01" max="2023-12-31" id="txtDateTo" class="form-control" />
+                @Html.ValidationMessageFor(model => model.DateCleared, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button id="storeWarehouse" type="button"
+                        onclick="VerifyStorageInformation(@Model.WarehouseId)" class="btn btn-default">
+                    Store
+                </button>
+            </div>
+        </div>
+    </div>
+}
